@@ -2,17 +2,10 @@
 
 Welcome!
 
-In our project, we will store login information from users signing in to play our web based games that we have created
+In our project, we will store login information and game data from users signing in to play our web based games that we have created.
 
-We will incorporate these new learnings in this trimester to our project so we hit all AP big ideas and requiremtns:
-Forms, POSTS, Sessions will add programming, logic, and algorithms
+Project Plan: https://docs.google.com/document/d/1mBXO7uWjiH4jlf6LWTVFscOVl4NpoTkd7mbbHJJ-PdY/edit?usp=sharing
+Scrum Board / Padlet: https://padlet.com/noland43522/59nicc77kbm7ebt7
 
-We will also incorporate fundamentals that we have already used such as: 
-Frontend HTML
-Jinja 
-HTTP Get and Post 
-Backend Python 
-Flask 
-SQL Database
-IntelliJ IDEA, Github
-Self hosting  on the Internet; adding Nginx 
+History of big ticket changes:
+  12/11 Updated readme to include project plan and scrum board links
