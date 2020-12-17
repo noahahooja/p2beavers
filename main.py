@@ -12,16 +12,16 @@ def home():
     return render_template("home.html")
 
 @app.route('/flappybeaver/')
-def tetris():
-    return render_template
+def flappybeaver():
+    return render_template ("flappybeaver.html")
 
 @app.route('/crossybeaver/')
-def mario():
-    return render_template
+def crossybeaver():
+    return render_template ("crossybeaver.html")
 
 @app.route('/2048/')
-def hangman():
-    return render_template
+def numbergame():
+    return render_template ("2048.html")
 
 @app.route('/snake/')
 def snake():
