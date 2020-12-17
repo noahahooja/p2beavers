@@ -24,8 +24,19 @@ def hangman():
     return render_template
 
 @app.route('/snake/')
-def pacman():
-    return render_template
+def snake():
+    return render_template ("snake.html")
+
+@app.route('/login/')
+def login():
+    return render_template ("login.html")
+
+@app.route('/signup/')
+def signup():
+    return render_template ("signup.html")
+
+
+
 
 if __name__ == "__main__":
     #runs the application on the repl development server
