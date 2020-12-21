@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block title %}Index{% endblock %}
 {% block head %}
-{{ super() }}
-<style type="text/css">
-        .important { color: #336699; }
-    </style>
+<link href="flappybeaver.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 {% block content %}
 <h1>Flappy Beaver</h1>
 <p class="important">
-    How to play:
+    How to play: Press the spacebar when you want the beaver to jump.
 </p>
-
+<div id="flappybeaver">
+    <div id="dam"></div>
+    <div id="opening"></div>
+    <div id="beaver"></div>
+</div>
+<script src="flappybeaver.js"></script>
 {% endblock %}

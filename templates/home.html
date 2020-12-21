@@ -4,16 +4,42 @@
     {{ super() }}
     <style type="text/css">
         .important { color: #336699; }
+        .white { background-color:#FFFFFF; }
     </style>
 {% endblock %}
 {% block content %}
     <h1 style="color:Tomato;">Beaver's Arcade! </h1>
-    <p class="important" style="color:Tomato;>
+    <p class="important" style="color:Tomato";>
        Welcome to the Beaver's Arcade!
     </p>
 
     <p class="important";>
       Please select a game to play!
+    </p>
+
+    <p>
+        <figure>
+            <a href="/flappybeaver/">
+                <img src = "static\flappybeavers.png" alt = "flappy beaver" style="position:absolute; left:400px; top:200px;"/>
+                <figcaption class="white" style="position:absolute; left:400px; top:325px;">Your highscore:   </figcaption></b>
+                <figcaption class="white" style="position:absolute; left:400px; top:345px;">World highscore:   </figcaption>
+            </a>
+            <a href="/crossybeaver/">
+            <img src = "static\crossybeaver.png" alt = "crossy beaver" style="position:absolute; left:800px; top:200px;"/>
+            <figcaption class="white" style="position:absolute; left:800px; top:325px;">Your highscore:    </figcaption></b>
+            <figcaption class="white" style="position:absolute; left:800px; top:345px;">World highscore:    </figcaption>
+            </a>
+            <a href="/2048/">
+            <img src = "static\2048.png" alt = "2048" style="position:absolute; left:400px; top:400px;"/>
+            <figcaption class="white" style="position:absolute; left:400px; top:525px;">Your highscore:    </figcaption></b>
+            <figcaption class="white" style="position:absolute; left:400px; top:545px;">World highscore:    </figcaption>
+            </a>
+            <a href="/snake/">
+            <img src = "static\snake.png" alt = "snake" style="position:absolute; left:800px; top:400px;"/>
+            <figcaption class="white" style="position:absolute; left:800px; top:525px;">Your highscore:    </figcaption></b>
+            <figcaption class="white" style="position:absolute; left:800px; top:545px;">World highscore:    </figcaption>
+            </a>
+        </figure>
     </p>
 
     <style>
@@ -24,6 +50,4 @@ body {
   background-size: cover;
 }
 </style>
-
-
 {% endblock %}
