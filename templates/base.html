@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<title>{{Title}}</title>
 <head>
     {% block head %}
     <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}{% endblock %} - My Webpage</title>
     {% endblock %}
 </head>
 <head>
@@ -75,8 +75,6 @@
       .row.content {height:auto;}
     }
   </style>
-
-<body>
 <div id="content">{% block content %}{% endblock %}</div>
 <div id="footer">
     {% block footer %}

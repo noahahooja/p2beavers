@@ -1,49 +1,40 @@
-var dam = document.getElementById("dam");
-var opening = document.getElementById("opening");
-var beaver = document.getElementById("beaver);
-var jumping = 0;
-var counter = 0;
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
-opening.addEventListener('animationiteration', () => {
-    var random = -((Math.random()*300)+150);
-    var top = (random*100)+150;
-    opening.style.top = -(top) + "px";
-    counter++;
-});
+class Beaver {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.w = 40;
+    this.h = 40;
+    this.ySpeed = 3;
+  }
+  show() {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(this.x, this.y, this.w, this.h);
+  }
+  update() {
+    this.y += this.ySpeed;
+    this.ySpeed += gravity;
+  }
+}
 
-setInterval(function(){
-    var characterTop =
-    parseInt(window.getComputedStyle(beaver).getPropertyValue("top"));
-    if(jumping==0){
-        beaver.style.top = (characterTop+3)+"px";
-    }
-    var blockLeft = parseInt(window.getComputedStyle(dam).getPropertyValue("left"));
-    var holeTop = parseInt(window.getComputedStyle(opening).getPropertyValue("top"));
-    var cTop = characterTop-500;
-    if(characterTop>480)||((blockLeft<20)&&(blockleft>-50)&&((cTop<holeTop)||(cTop>holeTop+130))){
-        alert("Game over. Score: "+counter);
-        beaver.style.top = 100px;
-        counter=0;
-    }
-    });
+var p;
 
-document.addEventListener('keyup', event => {
-    if (event.code === 'Space') {
-        jumping = 1;
-        let jumpCount = 0;
-        var jumpInterval = setInterval(function(){
-            var characterTop =
-            parseInt(window.getComputedStyle(beaver).getPropertyValue("top"));
-            if((characterTop>6)&&(counter<15)){
-                beaver.style.top = (characterTop-5)+"px";
-            }
+var gravity = 0.1;
 
-            if(jumpCount>20){
-                clearInterval(jumpInterval);
-                jumping=0;
-                jumpCount=0;
-            }
-            jumpCount++;
-        })
-        }
-    });
+window.onload = function () {
+  start();
+  setInterval(update, 10);
+};
+
+function start() {
+  p = new Beaver(0, 400);
+}
+
+function update() {
+  canvas.width = canvas.width;
+  //Beaver
+  p.show();
+  p.update();
+}

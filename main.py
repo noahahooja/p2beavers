@@ -9,34 +9,31 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     #Flask import uses Jinga to render HTML
-    return render_template("home.html")
+    return render_template("home.html", Title="Home")
 
 @app.route('/flappybeaver/')
 def flappybeaver():
-    return render_template ("flappybeaver.html")
+    return render_template ("flappybeaver.html", Title="Flappy Beaver")
 
 @app.route('/crossybeaver/')
 def crossybeaver():
-    return render_template ("crossybeaver.html")
+    return render_template ("crossybeaver.html", Title="Crossy Beaver")
 
 @app.route('/2048/')
 def numbergame():
-    return render_template ("2048.html")
+    return render_template ("2048.html", Title="2048")
 
 @app.route('/snake/')
 def snake():
-    return render_template ("snake.html")
+    return render_template ("snake.html", Title="Snake")
 
 @app.route('/login/')
 def login():
-    return render_template ("login.html")
+    return render_template ("login.html", Title="Login")
 
 @app.route('/signup/')
 def signup():
-    return render_template ("signup.html")
-
-
-
+    return render_template ("signup.html", Title="Sign Up")
 
 if __name__ == "__main__":
     #runs the application on the repl development server

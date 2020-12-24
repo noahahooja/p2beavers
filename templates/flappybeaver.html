@@ -1,17 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Index{% endblock %}
 {% block head %}
-<link href="flappybeaver.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      canvas {
+        border: 3px solid #000000;
+        display: block;
+        margin-left:200px;
+        margin-top:80px;
+        background-color: lightblue;
+      }
+    </style>
 {% endblock %}
 {% block content %}
-<h1>Flappy Beaver</h1>
-<p class="important">
-    How to play: Press the spacebar when you want the beaver to jump.
-</p>
-<div id="flappybeaver">
-    <div id="dam"></div>
-    <div id="opening"></div>
-    <div id="beaver"></div>
-</div>
-<script src="flappybeaver.js"></script>
+    <canvas id="canvas" width="1000" height="500"></canvas>
+    <script src="flappybeaver.js"></script>
 {% endblock %}

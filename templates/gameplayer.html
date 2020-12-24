@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+      canvas {
+        border: 3px solid #000000;
+        display: block;
+        margin-left:200px;
+        margin-top:80px;
+        background-color: white;
+      }
+    </style>
+{% endblock %}
+{% block content %}
+<canvas id="gameCanvas" width="1000" height="500"></canvas>
+    {% block game %}
+    {% endblock %}
+{% endblock %}

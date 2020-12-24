@@ -1,29 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Canvas Breakout Game</title>
-    <style type="text/css">
-canvas {
-  margin: 0 auto;
-  display: block;
-}
-
-h1 {
-  display: block;
-  text-align: center;
-  margin-top: -300px;
-}
-</style>
-
-<body>
-
-<canvas></canvas>
-
-
-
-
+{% extends "gameplayer.html" %}
+{% block game %}
 <script type="text/javascript">
 /**
 * Breakout Game
@@ -35,7 +11,7 @@ window.onload = init;
 var stage;
 var bricks = new Array();
 var colors = ['rgb(255,0,0)','rgb(0,255,0)','rgb(0,0,255)','rgb(255,255,0)']
-var STAGE_WIDTH = 500;
+var STAGE_WIDTH = 1000;
 var STAGE_HEIGHT = 500;
 var mouseX = 0;
 var mouseY = 0;
@@ -109,7 +85,7 @@ function draw(){
 * Canvas
 */
 function initCanvas(){
-	canvas = document.createElement("canvas");
+	canvas = document.getElementByID("gameCanvas");
 	context = canvas.getContext('2d');
 	canvas.width=STAGE_WIDTH;
 	canvas.height=STAGE_HEIGHT;
@@ -167,7 +143,7 @@ function hitTest(){
 	}
 }
 /**
-* Brick Drawaing - draws a brick on the stage
+* Brick Drawing - draws a brick on the stage
 */
 function drawBrick(){
 	var xoffset = 50;
@@ -318,36 +294,5 @@ function Ball(x,y,radius){
 		this.vy*=-1;
 	}
 }
-
-
-  </script>
-
-<script>"use strict";var wprRemoveCPCSS=function wprRemoveCPCSS(){var elem;document.querySelector('link[data-rocket-async="style"][rel="preload"]')?setTimeout(wprRemoveCPCSS,200):(elem=document.getElementById("rocket-critical-css"))&&"remove"in elem&&elem.remove()};window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><script type="text/javascript">
-  window._taboola = window._taboola || [];
-  _taboola.push({article:'auto'});
-  !function (e, f, u, i) {
-    if (!document.getElementById(i)){
-      e.async = 1;
-      e.src = u;
-      e.id = i;
-      f.parentNode.insertBefore(e, f);
-    }
-  }(document.createElement('script'),
-  document.getElementsByTagName('script')[0],
-  '//cdn.taboola.com/libtrc/pythoncentral/loader.js',
-  'tb_loader_script');
-  if(window.performance && typeof window.performance.mark == 'function')
-    {window.performance.mark('tbl_ic');}
-</script><script type="text/javascript">
-        window._taboola = window._taboola || [];
-        _taboola.push({
-          mode: 'thumbnails-b',
-          container: 'taboola-below-article-thumbnails',
-          placement: 'Below Article Thumbnails',
-          target_type: 'mix'
-        });
-      </script><script type="text/javascript">
-    window._taboola = window._taboola || [];
-    _taboola.push({flush: true});
-  </script><noscript><link data-avlabs-exclude-css="1"  rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT%20Sans%7CLato%3A400%2C700%2C400italic%2C700italic%7COswald%3A400%2C700&display=swap" /><link data-avlabs-exclude-css="1"  rel="stylesheet" href="https://www.html5canvastutorials.com/wp-content/cache/min/1/0fcb0cf7a8f93d4902209ce81d92cdff.css" media="all" data-minify="1" /><link data-avlabs-exclude-css="1"  rel="stylesheet" href="/libraries/codeMirror/lib/codemirror.css"></noscript></body>
-
+</script>
+{% endblock %}
