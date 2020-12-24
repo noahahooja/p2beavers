@@ -1,18 +1,93 @@
-{% extends "base.html" %}
-{% block head %}
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      canvas {
-        border: 3px solid #000000;
-        display: block;
-        margin-left:200px;
-        margin-top:80px;
-        background-color: lightblue;
-      }
-    </style>
+{% extends "gameplayer.html" %}
+
+{% block custom %}
+    canvas {
+    border: 3px solid #000000;
+    display: block;
+    margin-left:200px;
+    margin-top:10px;
+    background-color: lightblue;
+    }
 {% endblock %}
-{% block content %}
-    <canvas id="canvas" width="1000" height="500"></canvas>
-    <script src="flappybeaver.js"></script>
+
+{% block game %}
+<script>
+    var canvas = document.getElementById("gameCanvas");
+    var ctx = canvas.getContext("2d");
+
+    class Beaver {
+    constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.ySpeed = 0;
+    }
+    show() {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(this.x, this.y, 40, 40);
+    }
+    update() {
+    this.y += this.ySpeed;
+    this.ySpeed += gravity;
+    }
+    }
+
+    class Dam {
+    constructor(holeTop) {
+    this.x = 1100;
+    this.holeTop = holeTop;
+    }
+    show() {
+    //holes are 80 height, twice as long as the player
+    ctx.fillStyle = "brown";
+    ctx.fillRect(this.x, 0, 80, this.holeTop);
+    ctx.fillRect(this.x, this.holeTop+80, 80, 420-this.holeTop);
+    }
+    }
+
+    function spawnDam() {
+        randrange = 50 + Math.random() * (375);
+        d = new Dam(randrange);
+        Dams.push(d);
+        }
+
+    var p;
+    var Dams = [];
+    var gravity = 0.02;
+
+    window.onload = function () {
+    start();
+    setInterval(update, 10);
+    setInterval(spawnDam, 3000);
+    };
+
+    function start() {
+    p = new Beaver(30, 50);
+    spawnDam();
+    }
+
+    function update() {
+    canvas.width = canvas.width;
+    //Beaver
+    p.show();
+    p.update();
+    gravity = 0.02;
+    var count = Dams.length;
+    for(var i = 0; i < count; i++) {
+        var item = Dams[i];
+        item.x -= 1;
+        item.show();
+    }
+    //delete offscreen dams from array and erase their value, so garbage will collect them
+    if (Dams[0].x == -80) {
+            Dams[0] = undefined;
+            Dams.splice(0,1);
+        }
+    }
+
+    document.addEventListener('keyup', event => {
+      if (event.code === 'Space') {
+        gravity = -0.9;
+        }
+    });
+</script>
 {% endblock %}

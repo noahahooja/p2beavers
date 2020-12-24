@@ -3,16 +3,26 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
+    .gamename {
+        font-size: 100px;
+        margin-left: 220px;
+        font-family: Impact;
+        }
+    {% block custom %}
       canvas {
         border: 3px solid #000000;
         display: block;
         margin-left:200px;
-        margin-top:80px;
+        margin-top:10px;
         background-color: white;
-      }
+        }
+    {% endblock %}
     </style>
 {% endblock %}
 {% block content %}
+<div class="gamename">
+    <h1 class="gamename">{{ Title }}</h1>
+</div>
 <canvas id="gameCanvas" width="1000" height="500"></canvas>
     {% block game %}
     {% endblock %}
