@@ -1,93 +1,190 @@
 {% extends "gameplayer.html" %}
 
-{% block custom %}
-    canvas {
-    border: 3px solid #000000;
-    display: block;
-    margin-left:200px;
-    margin-top:10px;
-    background-color: lightblue;
-    }
-{% endblock %}
-
 {% block game %}
+                                                                             <hidden beaver image></hidden>
+<img src="../static/beaver.png" style="display: none;" id="beaveravatar"/>
 <script>
     var canvas = document.getElementById("gameCanvas");
     var ctx = canvas.getContext("2d");
 
     class Beaver {
-    constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.ySpeed = 0;
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.ySpeed = 0;
+            this.width=40;
+            this.height=40;
+        }
+        show() {
+            var img = document.getElementById("beaveravatar");
+            ctx.drawImage(img, this.x, this.y, this.width, this.height);
+        }
+        update() {
+            this.y += this.ySpeed;
+            this.ySpeed += gravity;
+        }
     }
-    show() {
-    ctx.fillStyle = "yellow";
-    ctx.fillRect(this.x, this.y, 40, 40);
-    }
-    update() {
-    this.y += this.ySpeed;
-    this.ySpeed += gravity;
-    }
+
+    class Hitbox {
+        constructor(x, y, width, height, ySpeed) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.ySpeed = ySpeed;
+        }
+        show() {
+            // used for testing hitboxes
+            ctx.fillStyle = "rgba(100,200,25,0)";
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+        update(Beaver) {
+            this.y += Beaver.ySpeed;
+        }
     }
 
     class Dam {
-    constructor(holeTop) {
-    this.x = 1100;
-    this.holeTop = holeTop;
-    }
-    show() {
-    //holes are 80 height, twice as long as the player
-    ctx.fillStyle = "brown";
-    ctx.fillRect(this.x, 0, 80, this.holeTop);
-    ctx.fillRect(this.x, this.holeTop+80, 80, 420-this.holeTop);
-    }
-    }
-
-    function spawnDam() {
-        randrange = 50 + Math.random() * (375);
-        d = new Dam(randrange);
-        Dams.push(d);
+        constructor(holeTop) {
+            this.x = 1100;
+            this.holeTop = holeTop;
+            this.holeWidth = 80;
+            this.holeHeight = 80;
+            this.passed = 0;
         }
+        show() {
+            ctx.fillStyle = "brown";
+            ctx.fillRect(this.x, 0, this.holeWidth, this.holeTop);
+            ctx.fillRect(this.x, this.holeTop+this.holeHeight, this.holeWidth, 500-this.holeHeight-this.holeTop);
+        }
+    }
 
-    var p;
-    var Dams = [];
+    var dambuilder;
+    var updater;
+    var p; var d;
+    var Dams;
+    var velocity;
     var gravity = 0.02;
-
-    window.onload = function () {
-    start();
-    setInterval(update, 10);
-    setInterval(spawnDam, 3000);
-    };
-
-    function start() {
-    p = new Beaver(30, 50);
-    spawnDam();
-    }
-
-    function update() {
-    canvas.width = canvas.width;
-    //Beaver
-    p.show();
-    p.update();
-    gravity = 0.02;
-    var count = Dams.length;
-    for(var i = 0; i < count; i++) {
-        var item = Dams[i];
-        item.x -= 1;
-        item.show();
-    }
-    //delete offscreen dams from array and erase their value, so garbage will collect them
-    if (Dams[0].x == -80) {
-            Dams[0] = undefined;
-            Dams.splice(0,1);
-        }
-    }
+    var score;
+    var highscore;
+    var L1; var L2;
+    var M1; var M2;
+    var R1; var R2;
+    var Hitboxes;
+    var count1; var count2;
+    var hitbox; var dam;
 
     document.addEventListener('keyup', event => {
       if (event.code === 'Space') {
-        gravity = -0.9;
-        }
+         gravity = -0.9;
+         if (p==null) {
+            restart();
+         }
+      }
     });
+
+    function spawnDam() {
+        randrange = 50 + Math.random() * (350);
+        d = new Dam(randrange);
+        Dams.push(d);
+    }
+
+    window.onload = function () {
+        restart();
+    };
+
+    function restart() {
+        score = 0;
+        document.getElementById('scoreboard').innerHTML = score;
+        velocity = 1;
+        p = new Beaver(30, 230);
+        Dams = [];
+        L1 = new Hitbox(p.x+1, p.y+13, p.width/6-1, p.height-25, p.ySpeed);
+        L2 = new Hitbox(p.x+p.width/6, p.y+5, p.width/6, p.height-9, p.ySpeed);
+        M1 = new Hitbox(p.x+p.width/3, p.y+1, p.width/6, p.height-1, p.ySpeed);
+        M2 = new Hitbox(p.x+p.width/2, p.y+5, p.width/6, p.height-5, p.ySpeed);
+        R1 = new Hitbox(p.x+(4*p.width/6), p.y+10, p.width/6-2, p.height-15, p.ySpeed);
+        R2 = new Hitbox(p.x+(5*p.width/6), p.y+30, p.width/6, p.height-35, p.ySpeed);
+        Hitboxes = [L1, L2, M1, M2, R1, R2];
+        spawnDam();
+        updater = setInterval(update, 10);
+        dambuilder = setInterval(spawnDam, 3000+50*velocity);
+    };
+
+    function gameOver(endmessage) {
+        //death animation
+        //clear out the last game
+        p = null;
+        Dams = null;
+        L1 = null; L2 = null; M1 = null; M2 = null; R1 = null; R2 = null; Hitboxes = null;
+        clearInterval(updater);
+        clearInterval(dambuilder);
+        //show text game over, press space to start again
+        ctx.font = '50px Sans';
+        ctx.fillStyle = 'red';
+        ctx.fillText(endmessage, 275, 250);
+        ctx.font = '25px Calibra';
+        ctx.fillStyle = 'orange';
+        ctx.fillText("Press spacebar to play again", 325, 300);
+    };
+
+    function update() {
+    canvas.width = canvas.width;
+    //check for low level hacking
+    count1 = document.getElementById('scoreboard').innerHTML;
+    count2 = document.getElementById('highscoreboard').innerHTML;
+    if (score > count1+1 || count1 > score) {
+        count2 = 0;
+        gameOver("Tryna hack 😂😂🤡");
+    }
+    //Beaver
+    p.update();
+    p.show();
+    gravity = 0.02;
+    //ceiling/floor collisions
+    if (p.y+p.height >= 500 || p.y <= 0) {
+        gameOver("Absolute dogwater.");
+    }
+    //update hitbox positions
+    count1 = Hitboxes.length;
+    for (var h = 0; h < count1; h++) {
+        hitbox = Hitboxes[h];
+        hitbox.update(p);
+        hitbox.show();
+    }
+    //wall collisions and score detection
+    count2 = Dams.length;
+    for(var i = 0; i < count2; i++) {
+        dam = Dams[i];
+        dam.x -= velocity;
+        dam.show();
+        for (var h = 0; h < count1; h++) {
+            hitbox = Hitboxes[h];
+            //check if player is the same x as a dam. If so, if player is same height as a dam wall they die.
+            if (hitbox.x+hitbox.width >= dam.x && hitbox.x <= dam.x+dam.holeWidth) {
+                if (hitbox.y+hitbox.height >= dam.holeTop+dam.holeHeight || hitbox.y <= dam.holeTop) {
+                    gameOver("Bro you died? Cringe.");
+                }
+            }
+        }
+        //check scoreboard by seeing if the dam got past the player
+        if ((dam.x+dam.holeWidth < p.x-velocity) && (dam.passed == 0)) {
+            dam.passed = 1;
+            score += 1;
+            velocity += 0.2;
+            //update score
+            document.getElementById('scoreboard').innerHTML = score;
+            //update highscore
+            highscore = document.getElementById('highscoreboard').innerHTML;
+            if (score > highscore) {
+                document.getElementById('highscoreboard').innerHTML = score;
+            }
+        }
+    }
+    //delete offscreen dams from array and erase their value, so garbage will collect them
+    if (Dams[0].x == -Dams[0].holeWidth) {
+            Dams[0] = null;
+            Dams.splice(0,1);
+    }
+    }
 </script>
 {% endblock %}

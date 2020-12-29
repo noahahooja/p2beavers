@@ -1,149 +1,170 @@
-{% extends "gameplayer.html" %}
-{% block custom %}
-@import url("https://fonts.googleapis.com/css?family=VT323");
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Snake</title>
+    <style type="text/css">
+            @import url("https://fonts.googleapis.com/css?family=VT323");
 
-::selection {color:#FFFFFF; background:transparent;}
-::-moz-selection {color:#FFFFFF; background:transparent;}
+            ::selection {color:#FFFFFF; background:transparent;}
+            ::-moz-selection {color:#FFFFFF; background:transparent;}
 
-*{
-margin: 0;
-padding: 0;
-font-family: "VT323";
-}
-canvas {
-border: 3px solid red;
-display: block;
-margin-left:325px;
-margin-top:10px;
-background-color: black;
-}
-canvas:focus{
-outline: none;
-}
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: "VT323";
+            }
+            body{
+                background-color: #000000;
+            }
+            .wrap{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            header{
+                width: 340px;
+                font-size: 0;
+            }
+            canvas{
+                display: none;
+                border-style: solid;
+                border-width: 10px;
+                border-color: #FFFFFF;
+            }
+            canvas:focus{
+                outline: none;
+            }
 
-/* Top Styles */
-h1{
-display: inline-block;
-width: 100px;
-font-size: 32px;
-color: #FFFFFF;
-}
-.score{
-display: inline-block;
-width: 240px;
-font-size: 20px;
-color: #FFFFFF;
-text-align: right;
-}
-.score_value{
-font-size: inherit;
-}
-
-
-
-/* All screens style */
-#gameover a, #setting a, #menu a{
-display: block;
-}
-
-#gameover a, #setting a:hover, #menu a:hover{
-cursor: pointer;
-}
-
-#gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
-content: ">";
-margin-right: 10px;
-}
-
-/* Menu Screen Style */
-#menu{
-display: block;
-width: 340px;
-padding-top: 95px;
-padding-bottom: 95px;
-font-size: 40px;
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-color: #FFF;
-}
-
-#menu h2{
--webkit-animation: logo-ani 1000ms linear infinite;
-animation: logo-ani 1000ms linear infinite;
-margin-bottom: 30px;
-
-}
-
-#menu a{
-font-size: 30px;
-}
-
-@-webkit-keyframes logo-ani{
-50%{-webkit-transform: scale(1.3,1.3);}
-100%{-webkit-transform: scale(1.0,1.0);}
-}
-
-@keyframes logo-ani{
-50%{transform: scale(1.3,1.3);}
-100%{transform: scale(1.0,1.0);}
-}
+            /* Top Styles */
+            h1{
+                display: inline-block;
+                width: 100px;
+                font-size: 32px;
+                color: #FFFFFF;
+            }
+            .score{
+                display: inline-block;
+                width: 240px;
+                font-size: 20px;
+                color: #FFFFFF;
+                text-align: right;
+            }
+            .score_value{
+                font-size: inherit;
+            }
 
 
-/* Game Over Screen Style */
 
-#gameover{
-display: none;
-width: 340px;
-padding-top: 95px;
-padding-bottom: 95px;
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-font-size: 30px;
-color: #FFF;
-}
+            /* All screens style */
+            #gameover a, #setting a, #menu a{
+                display: block;
+            }
 
-#gameover p{
-margin-top: 25px;
-font-size: 20px;
-}
+            #gameover a, #setting a:hover, #menu a:hover{
+                cursor: pointer;
+            }
 
-/* Settings Screen Style */
-#setting{
-display: none;
-width: 340px;
-margin-left: auto;
-margin-right: auto;
-padding-top: 85px;
-padding-bottom: 85px;
-font-size: 30px;
-color: #FFF;
-text-align: center;
-}
+            #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
+                content: ">";
+                margin-right: 10px;
+            }
 
-#setting h2{
-margin-bottom: 15px;
-}
+            /* Menu Screen Style */
+            #menu{
+                display: block;
+                width: 340px;
+                padding-top: 95px;
+                padding-bottom: 95px;
+                font-size: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                color: #FFF;
+            }
 
-#setting p{
-margin-top: 10px;
-}
+            #menu h2{
+                -webkit-animation: logo-ani 1000ms linear infinite;
+                        animation: logo-ani 1000ms linear infinite;
+                margin-bottom: 30px;
 
-#setting input{
-display:none;
-}
+            }
 
-#setting label{
-cursor: pointer;
-}
+            #menu a{
+                font-size: 30px;
+            }
 
-#setting input:checked + label{
-background-color: #FFF;
-color: #000;
-}
-{% endblock %}
-{% block game %}
+            @-webkit-keyframes logo-ani{
+               50%{-webkit-transform: scale(1.3,1.3);}
+              100%{-webkit-transform: scale(1.0,1.0);}
+            }
+
+            @keyframes logo-ani{
+               50%{transform: scale(1.3,1.3);}
+              100%{transform: scale(1.0,1.0);}
+            }
+
+
+            /* Game Over Screen Style */
+
+            #gameover{
+                display: none;
+                width: 340px;
+                padding-top: 95px;
+                padding-bottom: 95px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-size: 30px;
+                color: #FFF;
+            }
+
+            #gameover p{
+                margin-top: 25px;
+                font-size: 20px;
+            }
+
+            /* Settings Screen Style */
+            #setting{
+                display: none;
+                width: 340px;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 85px;
+                padding-bottom: 85px;
+                font-size: 30px;
+                color: #FFF;
+                text-align: center;
+            }
+
+            #setting h2{
+                margin-bottom: 15px;
+            }
+
+            #setting p{
+                margin-top: 10px;
+            }
+
+            #setting input{
+                display:none;
+            }
+
+            #setting label{
+                cursor: pointer;
+            }
+
+            #setting input:checked + label{
+                background-color: #FFF;
+                color: #000;
+            }
+</style>
+
+<body>
+
+<header class="wrap">
+    <h1>Snake</h1>
+    <p class="score">Score: <span id="score_value">0</span></p>
+</header>
+<canvas class="wrap" id="snake" width="320" height="320" tabindex="1"></canvas>
 
 <!-- Game Over Screen -->
 <div id="gameover">
@@ -184,10 +205,16 @@ color: #000;
     <a id="newgame_menu">new game</a>
     <a id="setting_menu">settings</a>
 </div>
-<script>
 
-   (function(){
-    //Canvas & Context
+
+
+
+<script type="text/javascript">
+
+(function(){
+    /////////////////////////////////////////////////////////////
+
+    // Canvas & Context
     var canvas;
     var ctx;
 
@@ -230,26 +257,22 @@ color: #000;
 
     /////////////////////////////////////////////////////////////
 
-    node.addEventListener('keydown', function(event) {
-    const arrow = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
-});
+    var changeDir = function(key){
 
-    var changeDir = function(arrow){
-
-        if(arrow == "Up" && snake_dir != "Down"){
-            snake_next_dir = "Up";
+        if(key == 38 && snake_dir != 2){
+            snake_next_dir = 0;
         }else{
 
-        if (arrow == "Right" && snake_dir != "Left"){
-            snake_next_dir = "Right";
+        if (key == 39 && snake_dir != 3){
+            snake_next_dir = 1;
         }else{
 
-        if (arrow == "Down" && snake_dir != "Up"){
-            snake_next_dir = "Down";
+        if (key == 40 && snake_dir != 0){
+            snake_next_dir = 2;
         }else{
 
-        if(arrow == "Left" && snake_dir != "Right"){
-            snake_next_dir = "Left";
+        if(key == 37 && snake_dir != 1){
+            snake_next_dir = 3;
         } } } }
 
     }
@@ -288,10 +311,10 @@ color: #000;
 
             // 0 - Up, 1 - Right, 2 - Down, 3 - Left
             switch(snake_dir){
-                case "Up": _y--; break;
-                case "Right": _x++; break;
-                case "Down": _y++; break;
-                case "Left": _x--; break;
+                case 0: _y--; break;
+                case 1: _x++; break;
+                case 2: _y++; break;
+                case 3: _x--; break;
             }
 
             snake.pop();
@@ -452,11 +475,11 @@ color: #000;
 
     window.onload = function(){
 
-        canvas = document.getElementById("gameCanvas");
+        canvas = document.getElementById("snake");
         ctx = canvas.getContext("2d");
 
             // Screens
-            screen_snake = document.getElementById("gameCanvas");
+            screen_snake = document.getElementById("snake");
             screen_menu = document.getElementById("menu");
             screen_gameover = document.getElementById("gameover");
             screen_setting = document.getElementById("setting");
@@ -520,8 +543,37 @@ color: #000;
             }
         }
     }
+
 })();
 
-</script>
-<p class="score">Score: <span id="score_value">0</span></p>
-{% endblock %}
+
+  </script>
+
+<script>"use strict";var wprRemoveCPCSS=function wprRemoveCPCSS(){var elem;document.querySelector('link[data-rocket-async="style"][rel="preload"]')?setTimeout(wprRemoveCPCSS,200):(elem=document.getElementById("rocket-critical-css"))&&"remove"in elem&&elem.remove()};window.addEventListener?window.addEventListener("load",wprRemoveCPCSS):window.attachEvent&&window.attachEvent("onload",wprRemoveCPCSS);</script><script type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({article:'auto'});
+  !function (e, f, u, i) {
+    if (!document.getElementById(i)){
+      e.async = 1;
+      e.src = u;
+      e.id = i;
+      f.parentNode.insertBefore(e, f);
+    }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/pythoncentral/loader.js',
+  'tb_loader_script');
+  if(window.performance && typeof window.performance.mark == 'function')
+    {window.performance.mark('tbl_ic');}
+</script><script type="text/javascript">
+        window._taboola = window._taboola || [];
+        _taboola.push({
+          mode: 'thumbnails-b',
+          container: 'taboola-below-article-thumbnails',
+          placement: 'Below Article Thumbnails',
+          target_type: 'mix'
+        });
+      </script><script type="text/javascript">
+    window._taboola = window._taboola || [];
+    _taboola.push({flush: true});
+  </script><noscript><link data-avlabs-exclude-css="1"  rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT%20Sans%7CLato%3A400%2C700%2C400italic%2C700italic%7COswald%3A400%2C700&display=swap" /><link data-avlabs-exclude-css="1"  rel="stylesheet" href="https://www.html5canvastutorials.com/wp-content/cache/min/1/0fcb0cf7a8f93d4902209ce81d92cdff.css" media="all" data-minify="1" /><link data-avlabs-exclude-css="1"  rel="stylesheet" href="/libraries/codeMirror/lib/codemirror.css"></noscript></body>

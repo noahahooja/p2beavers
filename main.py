@@ -13,19 +13,19 @@ def home():
 
 @app.route('/flappybeaver/')
 def flappybeaver():
-    return render_template ("flappybeaver.html", Title="Flappy Beaver")
+    return render_template ("flappybeaver.html", Title="Flappy Beaver", width="1000")
 
 @app.route('/crossybeaver/')
 def crossybeaver():
-    return render_template ("crossybeaver.html", Title="Crossy Beaver")
+    return render_template ("crossybeaver.html", Title="Crossy Beaver", width="1000")
 
 @app.route('/2048/')
 def numbergame():
-    return render_template ("2048.html", Title="2048")
+    return render_template ("2048.html", Title="2048", width="500")
 
 @app.route('/snake/')
 def snake():
-    return render_template ("snake.html", Title="Snake")
+    return render_template ("snake.html", Title="Snake", width="500")
 
 @app.route('/login/')
 def login():

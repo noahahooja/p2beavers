@@ -3,27 +3,54 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
-    .gamename {
-        font-size: 100px;
-        margin-left: 220px;
+   .text-left-right {
+        margin-left: 200px;
+        text-align: left;
+        position: relative;
+   }
+   .left-text {
+        left: 0;
+        position: relative;
+   }
+   .right-text {
+        right: 0;
+        position: relative;
+   }
+   .gamename {
+        font-size: 75px;
+        margin-left: 460px;
+        margin-top: 10px;
         font-family: Impact;
         }
+   .scoreboard {
+        font-size: 40px;
+        margin-left: 25px;
+        margin-top: 0px;
+        font-family: Comic Sans;
+        }
+
     {% block custom %}
       canvas {
         border: 3px solid #000000;
         display: block;
         margin-left:200px;
-        margin-top:10px;
+        margin-top:0px;
         background-color: white;
         }
     {% endblock %}
-    </style>
+{% block image %}url(../static/ingame_screen.png){% endblock %}
+</style>
 {% endblock %}
 {% block content %}
-<div class="gamename">
-    <h1 class="gamename">{{ Title }}</h1>
-</div>
-<canvas id="gameCanvas" width="1000" height="500"></canvas>
+<h1 class="gamename">{{ Title }}</h1>
+<canvas id="gameCanvas" width="{{width}}" height="500"></canvas>
     {% block game %}
     {% endblock %}
+<h1 class="text-left-right">
+    <span class="left-text scoreboard">Score:</span>
+    <span class="right-text scoreboard" id="scoreboard">0</span>
+    <span class="left-text scoreboard" style="margin-left:300px">Highscore:</span>
+    <span class="right-text scoreboard" id="highscoreboard">0</span>
+</h1>
 {% endblock %}
+{% block footer %}{% endblock %}
