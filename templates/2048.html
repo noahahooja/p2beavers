@@ -1,14 +1,27 @@
 {% extends "gameplayer.html" %}
 {% block custom %}
 canvas {
-border: 3px solid red;
+border: 3px solid black;
 display: block;
 margin-left:325px;
 margin-top:10px;
-background-color: blue;
+background-color: white;
 }
 {% endblock %}
 {% block game %}
 <script>
+var canvas = document.getElementById("gameCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.fillStyle = "black";
+//top gridlines
+ctx.fillRect(1/4*500, 0, 5, 500);
+ctx.fillRect(2/4*500, 0, 5, 500);
+ctx.fillRect(3/4*500, 0, 5, 500);
+
+//side gridlines
+ctx.fillRect(0, 1/4*500, 500, 5);
+ctx.fillRect(0, 2/4*500, 500, 5);
+ctx.fillRect(0, 3/4*500, 500, 5);
 </script>
 {% endblock %}
