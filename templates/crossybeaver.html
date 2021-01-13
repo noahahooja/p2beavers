@@ -26,6 +26,38 @@ canvas{
     ctx.fillStyle = "green";
     ctx.fillRect(0, 440, 570, 45);
     ctx.fillRect(0, 220, 570, 45);
+
+    //drawing pathing for cars
+    ctx.beginPath();
+    ctx.moveTo(0, 395);
+    ctx.lineTo(570, 395);
+    ctx.strokeStyle = "white";
+    ctx.setLineDash([5]);
+    ctx.strokeWidth = 2
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 350);
+    ctx.lineTo(570, 350);
+    ctx.strokeStyle = "white";
+    ctx.setLineDash([0]);
+    ctx.strokeWidth = 4;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0, 305);
+    ctx.lineTo(570, 305);
+    ctx.strokeStyle = "white";
+    ctx.setLineDash([5]);
+    ctx.strokeWidth = 2;
+    ctx.stroke();
+
+    //water
+    ctx.fillStyle = "Navy";
+    ctx.fillRect(0, 0, 570, 220);
+
+
+
 </script>
 </body>
 </html>
