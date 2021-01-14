@@ -1,0 +1,178 @@
+{% extends "gameplayer.html" %}
+
+{% block game %}
+
+<script>
+var canvas = document.getElementById("gameCanvas");
+var ctx = canvas.getContext("2d");
+
+class Snake {
+    constructor(x, y, number) {
+        this.x = x;
+        this.y = y;
+        this.number = number;
+        this.speed = 5;
+        this.width = 5;
+        this.height = 5;
+    }
+    show() {
+        ctx.fillStyle = "Green";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    update(nextpiece) {
+        //updates the position of each snake trailpiece to the position of the piece one closer to the head of the snake
+        //"nextpiece" is always going to be the "snakePieces" array
+        this.x = nextpiece[this.number-1].x;
+        this.y = nextpiece[this.number-1].y;
+    }
+}
+
+class Head extends Snake {
+    constructor(x, y, number, direction) {
+        super(x, y, number);
+        this.direction = direction;
+    }
+    update() {
+        if (this.direction == "up") {
+            this.y -= this.speed;
+        } else if (this.direction == "down") {
+            this.y += this.speed;
+        } else if (this.direction == "left") {
+            this.x -= this.speed;
+        } else if (this.direction == "right") {
+            this.x += this.speed;
+        }
+    }
+}
+
+class Food {
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.width = 5;
+        this.height = 5;
+        this.showing = 1;
+    }
+    show() {
+        ctx.fillStyle = "Red";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    update(piece) {
+        //show unless the head just ate the piece of food.
+        //"piece" is going to be snakehead, needs parameter to be put into the class though.
+        if(piece.x == this.x && piece.y == this.y) {
+            this.showing = 0;
+        } else {
+            this.show();
+        }
+    }
+}
+
+var score;
+var snakeHead;
+var food;
+var snakePieces;
+
+function start() {
+    score=0;
+    document.getElementById('scoreboard').innerHTML = score;
+    snakeHead = new Head(0, 0, 0, "right");
+    snakePieces = [snakeHead];
+    spawnFood();
+    updater = setInterval(update, 100);
+}
+
+function gameOver() {
+    //death animation
+    //clear out the last game
+    snakehead = null;
+    snakePieces = null;
+    food = null;
+    clearInterval(updater);
+    //show text game over, press space to start again
+    ctx.font = '50px Sans';
+    ctx.fillStyle = 'red';
+    ctx.fillText("Ded", 275, 250);
+    ctx.font = '25px Calibra';
+    ctx.fillStyle = 'orange';
+    ctx.fillText("Press up arrow to play again", 100, 300);
+};
+
+function spawnSnakePiece() {
+    var lastX = snakePieces[snakePieces.length - 1].x;
+    var lastY = snakePieces[snakePieces.length - 1].y;
+    var snakeTrail = new Snake(lastX, lastY, snakePieces.length);
+    snakePieces.push(snakeTrail);
+}
+
+
+function spawnFood() {
+    randomX = 5*(Math.floor(Math.random()*100));
+    randomY = 5*(Math.floor(Math.random()*100));
+    var count = snakePieces.length;
+    for(var i = 0; i < count; i++) {
+        var piece = snakePieces[i];
+        if (randomX == piece.x && randomY == piece.y) {
+            //if the piece would be inside the snake, redo it
+            spawnFood();
+        }
+        //dont do else statement because its in the for loop. could trigger on some snake pieces but not on others. fall through instead.
+    }
+    food = new Food(randomX, randomY);
+}
+
+
+function update() {
+    canvas.width=canvas.width;
+    var count = snakePieces.length;
+    if (count > 1) {
+        for(var i = count - 1; i < 1; i--) {
+            var piece = snakePieces[i];
+            piece.update(snakePieces);
+            piece.show();
+        }
+    }
+    snakeHead.update();
+    snakeHead.show();
+    food.update(snakeHead);
+    if (food.showing == 0) {
+        food = null;
+        spawnFood();
+        spawnSnakePiece();
+    }
+    if (snakeHead.x < 0 || snakeHead.x > 475 || snakeHead.y < 0 || snakeHead.y > 475) {
+        gameOver();
+    }
+    score = snakePieces.length - 1;
+    document.getElementById('scoreboard').innerHTML = score;
+}
+
+window.onload = function () {
+        start();
+    };
+
+document.addEventListener("keydown", event => {
+    event.preventDefault();
+    const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+    switch(event.key) { // change to event.key to key to use the above variable
+       case "ArrowLeft":
+          // Left pressed
+          if (snakeHead.direction == "right") { break;} else {snakeHead.direction = "left";};
+          break;
+       case "ArrowRight":
+          // Right pressed
+           if (snakeHead.direction == "left") { break;} else {snakeHead.direction = "right";};
+          break;
+       case "ArrowUp":
+          // Up pressed
+          if (snakeHead.direction == "down") { break;} else {snakeHead.direction = "up";};
+          break;
+       case "ArrowDown":
+          // Down pressed
+          if (snakeHead.direction == "up") { break;} else {snakeHead.direction = "down";};
+          break;
+    }
+});
+
+</script>
+{% endblock %}
