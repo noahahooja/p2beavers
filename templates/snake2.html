@@ -151,5 +151,30 @@ window.onload = function () {
         start();
     };
 
+
+
+    document.addEventListener("keydown", event => {
+     event.preventDefault();
+     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
+     switch(event.key) { // change to event.key to key to use the above variable
+       case "ArrowLeft":
+         // Left pressed
+            if (snakeHead.direction == "right") {break;} else {snakeHead.direction = "left";};
+         break;
+       case "ArrowRight":
+         // Right pressed
+            if (snakeHead.direction == "left") {break;} else {snakeHead.direction = "right";};
+         break;
+       case "ArrowUp":
+         // Up pressed
+            if (snakeHead.direction == "down") {break;} else {snakeHead.direction = "up";};
+         break;
+       case "ArrowDown":
+         // Down pressed
+            if (snakeHead.direction == "up") {break;} else {snakeHead.direction = "down";};
+         break;
+     }
+});
+
 </script>
 {% endblock %}
