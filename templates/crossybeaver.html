@@ -18,43 +18,69 @@ canvas{
 
 </body>
 <canvas id="canvas" width="570" height="540"></canvas>
+
 <script type="text/javascript">
     var canvas = document.getElementById('canvas')
     var ctx = canvas.getContext('2d');
 
-    //drawing the grass
-    ctx.fillStyle = "green";
-    ctx.fillRect(0, 440, 570, 45);
-    ctx.fillRect(0, 220, 570, 45);
+    var beaver = new Image(); beaver.src = "../static/beaver.png";
+    var sx = 0;
+    var sy = 0;
+    var swidth = 500;
+    var sheight = 500;
+    var x = 50;
+    var y = 444;
+    var width = 30;
+    var height = 30;
 
-    //drawing pathing for cars
-    ctx.beginPath();
-    ctx.moveTo(0, 395);
-    ctx.lineTo(570, 395);
-    ctx.strokeStyle = "white";
-    ctx.setLineDash([5]);
-    ctx.strokeWidth = 2
-    ctx.stroke();
+    function drawBackground(){
+        //drawing the grass
+        ctx.fillStyle = "green";
+        ctx.fillRect(0, 440, 570, 45);
+        ctx.fillRect(0, 220, 570, 45);
 
-    ctx.beginPath();
-    ctx.moveTo(0, 350);
-    ctx.lineTo(570, 350);
-    ctx.strokeStyle = "white";
-    ctx.setLineDash([0]);
-    ctx.strokeWidth = 4;
-    ctx.stroke();
+        //drawing pathing for cars
+        ctx.beginPath();
+        ctx.moveTo(0, 395);
+        ctx.lineTo(570, 395);
+        ctx.strokeStyle = "white";
+        ctx.setLineDash([5]);
+        ctx.strokeWidth = 2
+        ctx.stroke();
 
-    ctx.beginPath();
-    ctx.moveTo(0, 305);
-    ctx.lineTo(570, 305);
-    ctx.strokeStyle = "white";
-    ctx.setLineDash([5]);
-    ctx.strokeWidth = 2;
-    ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, 350);
+        ctx.lineTo(570, 350);
+        ctx.strokeStyle = "white";
+        ctx.setLineDash([0]);
+        ctx.strokeWidth = 4;
+        ctx.stroke();
 
-    //water
-    ctx.fillStyle = "Navy";
-    ctx.fillRect(0, 0, 570, 220);
+        ctx.beginPath();
+        ctx.moveTo(0, 305);
+        ctx.lineTo(570, 305);
+        ctx.strokeStyle = "white";
+        ctx.setLineDash([5]);
+        ctx.strokeWidth = 2;
+        ctx.stroke();
+
+        //water
+        ctx.fillStyle = "Navy";
+        ctx.fillRect(0, 0, 570, 220);
+    }
+
+    function drawBeaver(){
+        //ctx.drawImage(beaver, sx, sy, swidth, sheight, x , y, width, height);
+        ctx.drawImage(beaver, 0, 0, 500, 500, 50, 444, 30, 30);
+    }
+
+    //Background refresh for players (Around 60 FPS)
+    function draw(){
+        drawBackground();
+        drawBeaver();
+        requestAnimationFrame(draw);
+    }
+    draw();
 
 
 
