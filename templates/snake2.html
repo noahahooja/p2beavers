@@ -157,19 +157,19 @@ document.addEventListener("keydown", event => {
     switch(event.key) { // change to event.key to key to use the above variable
        case "ArrowLeft":
           // Left pressed
-                               snakeHead.direction = "left";
+          if (snakeHead.direction == "right") { break;} else {snakeHead.direction = "left";};
           break;
        case "ArrowRight":
           // Right pressed
-                               snakeHead.direction = "right";
+           if (snakeHead.direction == "left") { break;} else {snakeHead.direction = "right";};
           break;
        case "ArrowUp":
           // Up pressed
-                               snakeHead.direction = "up";
+          if (snakeHead.direction == "down") { break;} else {snakeHead.direction = "up";};
           break;
        case "ArrowDown":
           // Down pressed
-                               snakeHead.direction = "down";
+          if (snakeHead.direction == "up") { break;} else {snakeHead.direction = "down";};
           break;
     }
 });
