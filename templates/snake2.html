@@ -11,7 +11,7 @@ class Snake {
         this.x = x;
         this.y = y;
         this.number = number;
-        this.speed = 25;
+        this.speed = 1;
         this.width=20;
         this.height=20;
     }
@@ -76,7 +76,7 @@ var snakePieces;
 function start() {
     score=0;
     document.getElementById('scoreboard').innerHTML = score;
-    snakeHead = new Head(12, 12, 0, "up");
+    snakeHead = new Head(12*25, 12*25, 0, "up");
     snakePieces = [snakeHead];
     spawnFood();
     updater = setInterval(update, 10);
@@ -132,6 +132,8 @@ function update() {
             piece.show();
         }
     }
+    snakeHead.update();
+    snakeHead.show();
     food.update(snakeHead);
     if (food.showing == 0) {
         food = null;

@@ -16,12 +16,6 @@
         right: 0;
         position: relative;
    }
-   .gamename {
-        font-size: 75px;
-        margin-left: 460px;
-        margin-top: 10px;
-        font-family: Impact;
-        }
    .scoreboard {
         font-size: 40px;
         margin-left: 25px;
@@ -29,7 +23,13 @@
         font-family: Comic Sans;
         }
 
-    {% block custom %}
+   {% block custom %}
+      .gamename {
+        font-size: 75px;
+        margin-left: 460px;
+        margin-top: 10px;
+        font-family: Impact;
+        }
       canvas {
         border: 3px solid #000000;
         display: block;
@@ -37,7 +37,7 @@
         margin-top:0px;
         background-color: white;
         }
-    {% endblock %}
+   {% endblock %}
 {% block image %}url(../static/ingame_screen.png){% endblock %}
 </style>
 {% endblock %}
