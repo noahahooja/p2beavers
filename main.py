@@ -25,7 +25,7 @@ def numbergame():
 
 @app.route('/snake/')
 def snake():
-    return render_template ("snake.html", Title="Snake", width="500")
+    return render_template ("snake2.html", Title="Snake", width="500")
 
 @app.route('/login/')
 def login():
