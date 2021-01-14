@@ -3,46 +3,53 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
-   .text-left-right {
-        margin-left: 200px;
-        text-align: left;
-        position: relative;
-   }
-   .left-text {
+    .left-text {
         left: 0;
         position: relative;
-   }
-   .right-text {
+    }
+    .right-text {
         right: 0;
         position: relative;
-   }
-   .scoreboard {
+    }
+    .scoreboard {
         font-size: 40px;
         margin-left: 25px;
         margin-top: 0px;
         font-family: Comic Sans;
-        }
-
+    }
+    .hidesmwrld {
+        visibility: hidden;
+        width: 1600px;
+        height: 700px;
+        position: absolute;
+        z-index: 1;
+    }
    {% block custom %}
+      .text-left-right {
+        margin-left: 200px;
+        text-align: left;
+        position: relative;
+      }
       .gamename {
         font-size: 75px;
         margin-left: 460px;
         margin-top: 10px;
         font-family: Impact;
-        }
+       }
       canvas {
         border: 3px solid #000000;
         display: block;
         margin-left:200px;
         margin-top:0px;
         background-color: white;
-        }
+      }
    {% endblock %}
 {% block image %}url(../static/ingame_screen.png){% endblock %}
 </style>
 {% endblock %}
 {% block content %}
-<h1 class="gamename">{{ Title }}</h1>
+
+<h1 class="gamename" id="gametitle">{{ Title }}</h1>
 <canvas id="gameCanvas" width="{{width}}" height="500"></canvas>
     {% block game %}
     {% endblock %}

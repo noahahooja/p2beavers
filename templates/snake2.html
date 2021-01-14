@@ -1,22 +1,44 @@
 {% extends "gameplayer.html" %}
-
+{% block custom %}
+.text-left-right {
+    margin-left: 400px;
+    text-align: left;
+    position: relative;
+}
+.gamename {
+    font-size: 75px;
+    margin-left: 650px;
+    margin-top: 10px;
+    font-family: Impact;
+}
+canvas {
+    border: 3px solid black;
+    display: block;
+    margin-left:500px;
+    margin-top:10px;
+    background-color: white;
+}
+{% endblock %}
 {% block game %}
-
 <script>
 var canvas = document.getElementById("gameCanvas");
 var ctx = canvas.getContext("2d");
 
 class Snake {
-    constructor(x, y, number) {
+    constructor(x, y, number, color, darkness) {
         this.x = x;
         this.y = y;
         this.number = number;
-        this.speed = 5;
-        this.width = 5;
-        this.height = 5;
+        this.color = color;
+        this.darkness = darkness;
+        this.speed = 20;
+        this.width = 20;
+        this.height = 20;
     }
     show() {
-        ctx.fillStyle = "Green";
+        var bruh = String(75 + this.color);
+        var bruh2 = String(this.darkness);
+        ctx.fillStyle = "rgba(" + bruh + "," + bruh2 + ",30,50)"
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     update(nextpiece) {
@@ -28,8 +50,8 @@ class Snake {
 }
 
 class Head extends Snake {
-    constructor(x, y, number, direction) {
-        super(x, y, number);
+    constructor(x, y, number, color, darkness, direction) {
+        super(x, y, number, color, darkness);
         this.direction = direction;
     }
     update() {
@@ -49,8 +71,8 @@ class Food {
     constructor(x,y) {
         this.x = x;
         this.y = y;
-        this.width = 5;
-        this.height = 5;
+        this.width = 20;
+        this.height = 20;
         this.showing = 1;
     }
     show() {
@@ -59,7 +81,7 @@ class Food {
     }
     update(piece) {
         //show unless the head just ate the piece of food.
-        //"piece" is going to be snakehead, needs parameter to be put into the class though.
+        //"piece" is going to be snakeHead, needs parameter to be put into the class though.
         if(piece.x == this.x && piece.y == this.y) {
             this.showing = 0;
         } else {
@@ -72,11 +94,15 @@ var score;
 var snakeHead;
 var food;
 var snakePieces;
+var colorSin;
+var darkocity;
+var lastDirection;
+var curse;
 
 function start() {
     score=0;
     document.getElementById('scoreboard').innerHTML = score;
-    snakeHead = new Head(0, 0, 0, "right");
+    snakeHead = new Head(20*12, 20*25, 0, 1, 1, "up");
     snakePieces = [snakeHead];
     spawnFood();
     updater = setInterval(update, 100);
@@ -85,7 +111,7 @@ function start() {
 function gameOver() {
     //death animation
     //clear out the last game
-    snakehead = null;
+    snakeHead = null;
     snakePieces = null;
     food = null;
     clearInterval(updater);
@@ -101,16 +127,14 @@ function gameOver() {
 function spawnSnakePiece() {
     var lastX = snakePieces[snakePieces.length - 1].x;
     var lastY = snakePieces[snakePieces.length - 1].y;
-    var snakeTrail = new Snake(lastX, lastY, snakePieces.length);
-    snakePieces.push(snakeTrail);
+    var snakeTrail = new Snake(lastX, lastY, snakePieces.length, colorSin, darkocity);
+    setTimeout(function(){snakePieces.push(snakeTrail);}, 101);
 }
 
-
 function spawnFood() {
-    randomX = 5*(Math.floor(Math.random()*100));
-    randomY = 5*(Math.floor(Math.random()*100));
-    var count = snakePieces.length;
-    for(var i = 0; i < count; i++) {
+    randomX = 20*(Math.floor(Math.random()*25));
+    randomY = 20*(Math.floor(Math.random()*25));
+    for(var i = 0; i < snakePieces.length; i++) {
         var piece = snakePieces[i];
         if (randomX == piece.x && randomY == piece.y) {
             //if the piece would be inside the snake, redo it
@@ -121,16 +145,14 @@ function spawnFood() {
     food = new Food(randomX, randomY);
 }
 
-
 function update() {
+    colorSin = Math.floor(Math.sin(score*(3.14/12))*500);
+    darkocity = Math.floor(Math.cos(score*(3.14/12))*500);
     canvas.width=canvas.width;
-    var count = snakePieces.length;
-    if (count > 1) {
-        for(var i = count - 1; i < 1; i--) {
-            var piece = snakePieces[i];
-            piece.update(snakePieces);
-            piece.show();
-        }
+    for(var i = snakePieces.length - 1; i >= 1; i--) {
+        var piece = snakePieces[i];
+        piece.update(snakePieces);
+        piece.show();
     }
     snakeHead.update();
     snakeHead.show();
@@ -140,39 +162,78 @@ function update() {
         spawnFood();
         spawnSnakePiece();
     }
-    if (snakeHead.x < 0 || snakeHead.x > 475 || snakeHead.y < 0 || snakeHead.y > 475) {
-        gameOver();
+    //collision with walls
+    if (snakeHead.x < 0 || snakeHead.x >= 500 || snakeHead.y < 0 || snakeHead.y >= 500) {gameOver();}
+    if (snakeHead.x == snakePieces[2].x && snakeHead.y == snakePieces[2].y && curse<2 && Math.random() < 0.2) {
+        curse += 1;
+        if (curse == 1) {
+            var img = document.getElementById("smwrld");
+            canvas.width=canvas.width;
+            ctx.drawImage(img, 0, 0, 500, 500);
+            setTimeout(function(){canvas.width=canvas.width;},150);
+            setTimeout(function(){document.getElementById('gametitle').innerHTML = "hehehe";},30000);
+            setTimeout(function(){document.getElementById('gametitle').innerHTML = "Snake";},32000);
+        } else {
+        var smwrld = document.getElementById("smwrld");
+        smwrld.style.visibility = "visible";
+        document.getElementById('scoreboard').innerHTML = 000;
+        var highscore = document.getElementById('highscoreboard').innerHTML;
+        document.getElementById('highscoreboard').innerHTML = 666;
+        setTimeout(function(){smwrld.style.marginTop = "25px";}, 50);
+        setTimeout(function(){smwrld.style.marginTop = "50px";}, 100);
+        setTimeout(function(){smwrld.style.marginTop = "75px";}, 150);
+        setTimeout(function(){smwrld.style.marginTop = "100px";}, 200);
+        setTimeout(function(){smwrld.style.visibility = "hidden";}, 150);
+        setTimeout(function(){smwrld.style.visibility = "visible";}, 200);
+        setTimeout(function(){smwrld.style.visibility = "hidden";}, 250);
+        setTimeout(function(){document.getElementById('scoreboard').innerHTML = score;}, 300);
+        setTimeout(function(){document.getElementById('highscoreboard').innerHTML = highscore;}, 300);
+        setTimeout(function(){clearInterval(smwrlder);}, 250);
+        smwrlder = null;
+        }
+    }
+    //collision with self, separate from the other one because head had to update last
+    for(var i = snakePieces.length - 1; i >= 1; i--) {
+        var piece = snakePieces[i];
+        if (piece.x == snakeHead.x && piece.y == snakeHead.y) {gameOver();}
     }
     score = snakePieces.length - 1;
     document.getElementById('scoreboard').innerHTML = score;
+    var highscore = document.getElementById('highscoreboard').innerHTML;
+    if (score > highscore) {document.getElementById('highscoreboard').innerHTML = score;}
 }
-
-window.onload = function () {
-        start();
-    };
 
 document.addEventListener("keydown", event => {
     event.preventDefault();
     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     switch(event.key) { // change to event.key to key to use the above variable
        case "ArrowLeft":
+       case "a":
           // Left pressed
-          if (snakeHead.direction == "right") { break;} else {snakeHead.direction = "left";};
+          if (snakeHead.direction == "right") {break;} else {snakeHead.direction = "left";};
           break;
        case "ArrowRight":
+       case "d":
           // Right pressed
-           if (snakeHead.direction == "left") { break;} else {snakeHead.direction = "right";};
+           if (snakeHead.direction == "left") {break;} else {snakeHead.direction = "right";};
           break;
        case "ArrowUp":
+       case "w":
           // Up pressed
-          if (snakeHead.direction == "down") { break;} else {snakeHead.direction = "up";};
+          if (snakeHead == null) {start();} else if (snakeHead.direction == "down") {break;} else {snakeHead.direction = "up";};
           break;
        case "ArrowDown":
+       case "s":
           // Down pressed
-          if (snakeHead.direction == "up") { break;} else {snakeHead.direction = "down";};
+          if (snakeHead.direction == "up") {break;} else {snakeHead.direction = "down";};
           break;
     }
 });
+
+window.onload = function () {
+        curse = 0;
+        start();
+    };
 
 </script>
 {% endblock %}

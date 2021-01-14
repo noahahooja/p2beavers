@@ -1,11 +1,22 @@
 {% extends "gameplayer.html" %}
 {% block custom %}
+.text-left-right {
+    margin-left: 200px;
+    text-align: left;
+    position: relative;
+}
+.gamename {
+    font-size: 75px;
+    margin-left: 460px;
+    margin-top: 10px;
+    font-family: Impact;
+}
 canvas {
-border: 3px solid black;
-display: block;
-margin-left:325px;
-margin-top:10px;
-background-color: white;
+    border: 3px solid black;
+    display: block;
+    margin-left:325px;
+    margin-top:10px;
+    background-color: white;
 }
 {% endblock %}
 {% block game %}

@@ -3,6 +3,7 @@
 <html lang="en">
 <title>{{Title}}</title>
 <head>
+    <img src="../static/smwrld.jpg" class="hidesmwrld" style="visibility: hidden; position: absolute" id="smwrld"/>
     {% block head %}
     <link rel="stylesheet" href="style.css" />
     {% endblock %}
@@ -42,6 +43,8 @@
 </nav>
 
 <style>
+    html, body {margin: 0; height: 100%; overflow: hidden}
+    {disables scrollbar}
     body {
         background-image: {% block image %}url(static/home.jpg){% endblock %};
         filter: brightness(85%);
