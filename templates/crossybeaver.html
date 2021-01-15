@@ -33,6 +33,37 @@ canvas{
     var width = 30;
     var height = 30;
 
+    var rightPressed= false;
+    var leftPressed = false;
+    var upPressed = false;
+    var downPressed = false;
+
+    var up = true;
+    var down = true;
+    var right = true;
+    var left = true;
+
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
+
+
+    function keyDownHandler(e)
+    {
+        if(e.keyCode == 39) {rightPressed = true;}
+        if(e.keyCode == 37) {leftPressed = true;}
+        if(e.keyCode == 38) {upPressed = true;}
+        if(e.keyCode == 40) {downPressed = true;}
+    }
+
+    function keyUpHandler(e)
+    {
+        if(e.keyCode == 39) {rightPressed = false;}
+        if(e.keyCode == 37) {leftPressed = false;}
+        if(e.keyCode == 38) {upPressed = false;}
+        if(e.keyCode == 40) {downPressed = false;}
+    }
+
+
     function drawBackground(){
         //drawing the grass
         ctx.fillStyle = "green";
@@ -70,14 +101,44 @@ canvas{
     }
 
     function drawBeaver(){
-        //ctx.drawImage(beaver, sx, sy, swidth, sheight, x , y, width, height);
-        ctx.drawImage(beaver, 0, 0, 500, 500, 50, 444, 30, 30);
+        ctx.drawImage(beaver, sx, sy, swidth, sheight, x , y, width, height);
+        //ctx.drawImage(beaver, 0, 0, 500, 500, 50, 444, 30, 30);
     }
 
     //Background refresh for players (Around 60 FPS)
-    function draw(){
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBackground();
         drawBeaver();
+
+        if (upPressed==true && up==true) {
+            y = y - 44;
+            up = false;
+        }
+        if (upPressed==false) {
+            up = true;
+        }
+        if (downPressed==true && down==true) {
+            y = y + 44;
+            down = false;
+        }
+        if (downPressed==false) {
+            down = true;
+        }
+        if (rightPressed==true && right==true) {
+            x = x + 44;
+            right = false;
+        }
+        if (rightPressed==false) {
+            right = true;
+        }
+        if (leftPressed==true && left==true) {
+            x = x - 44;
+            left = false;
+        }
+        if (leftPressed==false) {
+            left = true;
+        }
         requestAnimationFrame(draw);
     }
     draw();
