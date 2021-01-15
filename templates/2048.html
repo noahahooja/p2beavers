@@ -1,22 +1,11 @@
 {% extends "gameplayer.html" %}
 {% block custom %}
-.text-left-right {
-    margin-left: 200px;
-    text-align: left;
-    position: relative;
-}
-.gamename {
-    font-size: 75px;
-    margin-left: 460px;
-    margin-top: 10px;
-    font-family: Impact;
-}
 canvas {
-    border: 3px solid black;
-    display: block;
-    margin-left:325px;
-    margin-top:10px;
-    background-color: white;
+border: 3px solid black;
+display: block;
+margin-left:325px;
+margin-top:10px;
+background-color: white;
 }
 {% endblock %}
 {% block game %}
@@ -41,4 +30,6 @@ ctx.fillRect(125, 1/4*500, 0, 5, 500);
 ctx.fillRect(125, 2/4*500, 0, 5, 500);
 ctx.fillRect(125, 3/4*500, 0, 5, 500);
 </script>
+
+
 {% endblock %}
