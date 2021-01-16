@@ -1,0 +1,3 @@
+Flask~=1.1.2
+flask-sqlalchemy
+# MySQLPyMySQL# Postgrespsycopg2# MSSQLpyodbc# Oraclecx_Oracle

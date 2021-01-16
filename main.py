@@ -1,9 +1,39 @@
-import data
-
-from flask import Flask, render_template
+from flask import (
+    Flask, g, redirect, render_template, request, session, url_for
+)
+from flask_sqlalchemy import SQLAlchemy
 
 #create a Flask instance
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    __tablename__ = "Users"
+
+    username = db.Column(db.String(15), primary_key=True)
+    password = db.Column(db.String(20))
+    flappy_score = db.Column(db.Integer)
+    crossy_score = db.Column(db.Integer)
+    twenty_score = db.Column(db.Integer)
+    snake_score = db.Column(db.Integer)
+
+@app.route('/<username>/<password>')
+def index(username, password):
+    user = User(username=username, password=password, flappy_score=0, crossy_score=0, twenty_score=0, snake_score=0)
+    db.session.add(user)
+    db.session.commit()
+
+    return '<h1>Added New User!</h1>'
+
+@app.route('/<password>')
+def get_user(password):
+    user = User.query.filter_by(password=password).all()
+
+    return f'<h1>That user is: { user.username }</h1>'
 
 #connects default URL to a function
 @app.route('/')
