@@ -65,11 +65,11 @@ def login():
 def signup():
     return render_template ("signup.html", Title="Sign Up")
 
-@app.route('/joke', methods=['GET', 'POST'])
+@app.route('/restapi/joke', methods=['GET', 'POST'])
 def joke():
 # call to random joke web api
     url = 'https://quotes15.p.rapidapi.com/quotes/random/'
-    resp = requests.get(url)
+    resp = request.get(url)
 
 # formatting variables from return
     setup = resp.json()[0]['setup']
