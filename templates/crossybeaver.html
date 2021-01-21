@@ -43,6 +43,8 @@ canvas{
     var right = true;
     var left = true;
 
+    var car= new Image(); car.src = "../static/beavercars.png";
+
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
 
@@ -141,12 +143,17 @@ canvas{
         }
     }
 
+    function drawCars(){
+        ctx.drawImage(car,0, 0, 60, 35, 100, 400, 60, 35);
+    }
+
     //Background refresh for players (Around 60 FPS)
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawBackground();
         drawBeaver();
         moveBeaver();
+        drawCars();
 
         requestAnimationFrame(draw);
     }
