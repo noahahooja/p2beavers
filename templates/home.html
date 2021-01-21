@@ -41,3 +41,11 @@
         </figure>
     </p>
 {% endblock %}
+{% block footer %}
+    <h1>Random Joke</h1>
+    <p class="setup">Where do programmers like to hangout?</p>
+    <p class="punchline">The Foo Bar.</p>
+    <form method="POST" ID="myForm" action=/restapi/joke >
+        <input type="submit" value="New Joke">
+    </form>
+{% endblock %}
