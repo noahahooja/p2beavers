@@ -65,6 +65,17 @@ def login():
 def signup():
     return render_template ("signup.html", Title="Sign Up")
 
+@app.route('/joke', methods=['GET', 'POST'])
+def joke():
+# call to random joke web api
+    url = 'https://quotes15.p.rapidapi.com/quotes/random/'
+    resp = requests.get(url)
+
+# formatting variables from return
+    setup = resp.json()[0]['setup']
+
+    return render_template('joke.html', setup = setup)
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True, port='5002', host='127.0.0.1')
