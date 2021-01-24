@@ -48,16 +48,15 @@
 </style>
 {% endblock %}
 {% block content %}
-
 <h1 class="gamename" id="gametitle">{{ Title }}</h1>
 <canvas id="gameCanvas" width="{{width}}" height="500"></canvas>
-    {% block game %}
-    {% endblock %}
 <h1 class="text-left-right">
     <span class="left-text scoreboard">Score:</span>
     <span class="right-text scoreboard" id="scoreboard">0</span>
     <span class="left-text scoreboard" style="margin-left:300px">Highscore:</span>
     <span class="right-text scoreboard" id="highscoreboard">0</span>
 </h1>
+    {% block game %}
+    {% endblock %}
 {% endblock %}
 {% block footer %}{% endblock %}
