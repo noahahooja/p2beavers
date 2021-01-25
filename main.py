@@ -111,14 +111,18 @@ import requests
 @app.route('/joke', methods=['GET', 'POST'])
 def joke():
 # call to random joke web api
-    url = "https://quotes21.p.rapidapi.com/quote"
+    import requests
+
+    url = "https://quotes15.p.rapidapi.com/quotes/random/"
+
+    querystring = {"language_code":"en"}
 
     headers = {
     'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
-    'x-rapidapi-host': "quotes21.p.rapidapi.com"
+    'x-rapidapi-host': "quotes15.p.rapidapi.com"
     }
 
-    response = requests.request("GET", url, headers=headers)
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
 
     return render_template("home.html", Title="Home", loginUsername='', logged_in=0, joke=response.text)
