@@ -34,10 +34,18 @@
                 <li><a href="/2048/">2048</a></li>
                 <li><a href="/snake/">Snake</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="login" style="color:dodgerblue" >Login</a></li>
-                <li><a href="signup" style="color:dodgerblue" >Sign Up</a></li>
-            </ul>
+            {% if logged_in == 0: %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/login/" style="color:dodgerblue" >Login</a></li>
+                    <li><a href="/signup/" style="color:dodgerblue" >Sign Up</a></li>
+                </ul>
+            {% endif %}
+            {% if logged_in == 1: %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="color:white">Logged in as: {{loginUsername}}</a></li>
+                    <li><a href="/sign_out/user" style="color:dodgerblue">Sign Out</a></li>
+                </ul>
+            {% endif %}
         </div>
     </div>
 </nav>
@@ -46,7 +54,7 @@
     html, body {margin: 0; height: 100%; overflow: hidden}
     {disables scrollbar}
     body {
-        background-image: {% block image %}url(static/home.jpg){% endblock %};
+        background-image: {% block image %}url(/static/home.jpg/){% endblock %};
         filter: brightness(85%);
         background-repeat: no-repeat;
         background-attachment: fixed;
