@@ -104,19 +104,24 @@ def numbergame():
 def snake():
     return render_template("snake2.html", Title="Snake", width="500")
 
+import requests
+
+
+
 @app.route('/joke', methods=['GET', 'POST'])
 def joke():
 # call to random joke web api
-    url = 'https://official-joke-api.appspot.com/jokes/programming/random'
-    #url = 'https://official-joke-api.appspot.com/jokes/programming/random'
-    resp = request.get(url)
+    url = "https://quotes21.p.rapidapi.com/quote"
 
-# formatting variables from return
-    setup = resp.json()[0]['setup']
+    headers = {
+    'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
+    'x-rapidapi-host': "quotes21.p.rapidapi.com"
+    }
 
-    punchline = resp.json()[0]['punchline']
+    response = requests.request("GET", url, headers=headers)
 
-    return render_template('joke.html', setup = setup, punchline = punchline)
+
+    return render_template("home.html", Title="Home", loginUsername='', logged_in=0, joke=response.text)
 
 if __name__ == "__main__":
     #runs the application on the repl development server

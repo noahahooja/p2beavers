@@ -1,0 +1,12 @@
+import requests
+
+url = "https://quotes21.p.rapidapi.com/quote"
+
+headers = {
+    'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
+    'x-rapidapi-host': "quotes21.p.rapidapi.com"
+    }
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.text)

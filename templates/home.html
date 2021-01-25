@@ -42,9 +42,24 @@
     </p>
 {% endblock %}
 {% block footer %}
+
+import requests
+
+url = "https://quotes21.p.rapidapi.com/quote"
+
+headers = {
+    'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
+    'x-rapidapi-host': "quotes21.p.rapidapi.com"
+    }
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.text)
 <h1 style="color:Green;">Random Quote</h1>
-    <p class="setup" style="color:Green">Click for joke.</p>
-    <form method="POST" ID="myForm" action=/restapi/joke >
+    <p class="setup" style="color:Green">Click for quote.</p>
+    <form method="POST" ID="myForm" action={{url_for('joke')}} >
         <input type="submit" value="New Quote">
     </form>
+
+    <p>{{joke}}</p>
 {% endblock %}
