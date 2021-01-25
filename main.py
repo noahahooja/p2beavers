@@ -3,10 +3,12 @@ from flask import (
 )
 from flask_sqlalchemy import SQLAlchemy
 
+import random
+
 #create a Flask instance
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 db = SQLAlchemy(app)
 
@@ -20,12 +22,6 @@ class User(db.Model):
     twenty_score = db.Column(db.Integer)
     snake_score = db.Column(db.Integer)
 
-    def __str__(self):
-        return f'{ self.username }'
-
-    def passWord(self):
-        return f'{self.password}'
-
 @app.route('/sign_up/user', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -37,7 +33,7 @@ def index():
                 user = User(username=username, password=password, flappy_score=0, crossy_score=0, twenty_score=0, snake_score=0)
                 db.session.add(user)
                 db.session.commit()
-                return render_template("signup.html", Title="Sign Up", redtext="Added New User: " + f'{ user.username }' + '. Now go log in.', filledUsername=username)
+                return render_template("signup.html", Title="Sign Up", redtext="Added New User: " + username + '. Now go log in.', filledUsername=username)
             else:
                 return render_template("signup.html", Title="Sign Up", redtext='Password does not match confirmed password.', filledUsername=username)
         except:
@@ -108,9 +104,9 @@ import requests
 
 
 
-@app.route('/joke', methods=['GET', 'POST'])
-def joke():
-# call to random joke web api
+@app.route('/restapi/quote/', methods=['GET', 'POST'])
+def quote():
+# call to random quote web api
     import requests
 
     url = "https://quotes15.p.rapidapi.com/quotes/random/"
@@ -124,8 +120,15 @@ def joke():
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
+    #quote = response.text
 
-    return render_template("home.html", Title="Home", loginUsername='', logged_in=0, joke=response.text)
+    start1 = 'ent":'
+    end1 = ',"ur'
+    quote1 = response.text[response.text.find(start1)+len(start1):response.text.find(end1)+len(start1)-5]
+
+    quote = quote1 + " - " + random.choice(['Noah Ahooja','Ryan Luo','Aiden Tung'])
+
+    return render_template("home.html", Title="Home", loginUsername='', logged_in=0, quote=quote)
 
 if __name__ == "__main__":
     #runs the application on the repl development server
