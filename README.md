@@ -33,4 +33,4 @@ Goals
 Evidence of code completion and review guidance:
 https://docs.google.com/document/d/1XIT4tkmv0a9W0HzwQUHU-CpebnF9vkLzT2ZUdbXnGU4/edit?usp=sharing
 
-google doc was needed for images.
+Easter Egg Location: http://beavers.pii.at
