@@ -167,12 +167,13 @@ function update() {
     if (snakeHead.x == snakePieces[2].x && snakeHead.y == snakePieces[2].y && curse<2 && Math.random() < 0.2) {
         curse += 1;
         if (curse == 1) {
-            var img = document.getElementById("smwrld");
-            canvas.width=canvas.width;
-            ctx.drawImage(img, 0, 0, 500, 500);
-            setTimeout(function(){canvas.width=canvas.width;},150);
-            setTimeout(function(){document.getElementById('gametitle').innerHTML = "hehehe";},30000);
-            setTimeout(function(){document.getElementById('gametitle').innerHTML = "Snake";},32000);
+            document.getElementById('gametitle').innerHTML = "go to: beavers.pii.at";
+            //var img = document.getElementById("smwrld");
+            //canvas.width=canvas.width;
+            //ctx.drawImage(img, 0, 0, 500, 500);
+            //setTimeout(function(){canvas.width=canvas.width;},150);
+            //setTimeout(function(){document.getElementById('gametitle').innerHTML = "hehehe";},30000);
+            //setTimeout(function(){document.getElementById('gametitle').innerHTML = "Snake";},32000);
         } else {
         var smwrld = document.getElementById("smwrld");
         smwrld.style.visibility = "visible";
