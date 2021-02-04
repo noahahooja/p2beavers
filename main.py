@@ -100,6 +100,10 @@ def numbergame():
 def snake():
     return render_template("snake2.html", Title="Snake", width="500")
 
+@app.route('/scorepage/', methods=['GET', 'POST'])
+def scorepage():
+    return render_template("scorepage.html", Title="Scores page", width="1000")
+
 import requests
 
 
