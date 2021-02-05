@@ -7,7 +7,8 @@ In our project, we will store login information and game data from users signing
 History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
   12/24 Gameplayer format is 90% complete, needs databasing
-  1/15 Games are completed/almost done.
+  1/15 Games are completed/almost done
+  2/1 Big Data Tickets
 
 BEAVERS
 
@@ -32,5 +33,21 @@ Goals
 
 Evidence of code completion and review guidance:
 https://docs.google.com/document/d/1XIT4tkmv0a9W0HzwQUHU-CpebnF9vkLzT2ZUdbXnGU4/edit?usp=sharing
+
+Week of 2/1: 
+
+Ticket #1
+Noah/Aiden: Incorporate a system where users can enter their score on one of our four mini games. We will be able to store this information and users will be able to see other entered information. Add more REST API sections in website. The website will include a random word api which outputs a random word giving its definition and pronunciation. There is also a random joke api which outputs a random joke when clicked.
+
+Direct link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/scorepage.html 
+https://github.com/noahahooja/p2beavers/blob/main/main.py
+https://github.com/noahahooja/p2beavers/blob/main/templates/home.html
+
+Runtime link: beaversarcade.cf
+
+Ticket #2:
+
+Ryan: Ajax
+Nolan: Login systems
 
 Easter Egg Location: http://beavers.pii.at
