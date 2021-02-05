@@ -134,6 +134,29 @@ def quote():
 
     return render_template("home.html", Title="Home", loginUsername='', logged_in=0, quote=quote)
 
+@app.route('/restapi/word/', methods=['GET', 'POST'])
+def word():
+    # call to random quote web api
+    import requests
+
+    url = "https://random-words-with-pronunciation.p.rapidapi.com/word"
+
+    headers = {
+    'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
+    'x-rapidapi-host': "random-words-with-pronunciation.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+
+    #quote = response.text
+
+    word1 = response.text
+
+    word = word1 + " - " + random.choice(['Websters Dictionary'])
+
+
+    return render_template("home.html", Title="Home", loginUsername='', logged_in=0, word=word)
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True, port='5002', host='127.0.0.1')

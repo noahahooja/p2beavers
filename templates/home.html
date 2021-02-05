@@ -48,4 +48,12 @@
         <input type="submit" value="New Quote">
     </form>
 <p style="background-color:black; color:blue; margin-right:1200px; font:impact; font-size:20px">{{quote}}</p>
+
+
+<h1 style="color:Green;">Random Word</h1>
+<p class="setup" style="color:Green">Click for random word/definition</p>
+<form method="POST" ID="myForm" action=/restapi/word/ >
+    <input type="submit" value="New Word">
+</form>
+<p style="background-color:black; color:blue; margin-right:1200px; font:impact; font-size:20px">{{word}}</p>
 {% endblock %}
