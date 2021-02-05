@@ -47,7 +47,7 @@ Runtime link: beaversarcade.cf
 
 Ticket #2:
 
-Ryan: Ajax
+Ryan: Ajax - a process which allows user information and new scores to be updated without the user ever having to reload the page. This will improve website efficiency, user interface, and overall run time. AJAX uses XMLHTTPRequest object to exchange information between a server, and then uses javascript to reupload and display this information.
 Nolan: Login systems
 
 Easter Egg Location: http://beavers.pii.at
