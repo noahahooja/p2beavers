@@ -50,4 +50,6 @@ Ticket #2:
 Ryan: Ajax - a process which allows user information and new scores to be updated without the user ever having to reload the page. This will improve website efficiency, user interface, and overall run time. AJAX uses XMLHTTPRequest object to exchange information between a server, and then uses javascript to reupload and display this information.
 Nolan: Login systems
 
+Ticket #3
+Nolan: Easter Egg- Creating a separate web server and domain to run the easter egg website and creating the user interface for this server as well as a way to get back to the main site.
 Easter Egg Location: http://beavers.pii.at
