@@ -56,4 +56,11 @@
     <input type="submit" value="New Word">
 </form>
 <p style="background-color:black; color:blue; margin-right:1200px; font:impact; font-size:20px">{{word}}</p>
+
+<h1 style="color:Green;">Random Joke!</h1>
+<p class="setup" style="color:Green">Click for Joket</p>
+<form method="POST" ID="myForm" action=/restapi/joke/ >
+    <input type="submit" value="New Joke">
+</form>
+<p style="background-color:black; color:blue; margin-right:1200px; font:impact; font-size:20px">{{joke}}</p>
 {% endblock %}

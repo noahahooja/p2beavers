@@ -157,6 +157,31 @@ def word():
 
     return render_template("home.html", Title="Home", loginUsername='', logged_in=0, word=word)
 
+@app.route('/restapi/joke/', methods=['GET', 'POST'])
+def joke():
+    # call to random quote web api
+    import requests
+
+    url = "https://jokeapi-v2.p.rapidapi.com/joke/Any"
+
+    querystring = {"format":"json","blacklistFlags":"nsfw,racist","idRange":"0-150","type":"single,twopart"}
+
+    headers = {
+        'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
+        'x-rapidapi-host': "jokeapi-v2.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers, params = querystring)
+
+    #quote = response.text
+
+    joke1 = response.text
+
+    joke = joke1 + " - " + random.choice(['Websters Dictionary'])
+
+
+    return render_template("home.html", Title="Home", loginUsername='', logged_in=0, joke=joke)
+
 if __name__ == "__main__":
     #runs the application on the repl development server
     app.run(debug=True, port='5002', host='127.0.0.1')
