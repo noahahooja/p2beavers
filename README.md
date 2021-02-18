@@ -27,6 +27,10 @@ Noah and Ryan's Ticket:
 [Link to Ticket](https://github.com/noahahooja/p2beavers/projects/1#card-55168621)
 [Link to Code](https://github.com/noahahooja/p2beavers/blob/main/templates/leaderboard.html)
 
+Runtime link: beaversarcade.cf 
+Leaderboard tab on navbar is Noah and Ryan's Ticket
+Quiz tab on navbar is Aiden and Nolan's Ticket
+
 
 Goals
 1) Complete Flappy Beaver game (Nolan)
