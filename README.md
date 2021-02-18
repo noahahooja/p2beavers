@@ -23,6 +23,10 @@ Aiden's Ticket
 [Link to Ticket](https://github.com/noahahooja/p2beavers/projects/1#card-55160808)
 [Link to Code](https://github.com/noahahooja/p2beavers/blob/ea179da7790fb6cc17fb2a9b5b881361c94eece6/templates/quiz.html#L1-L198)
 
+Noah's Ticket:
+[Link to Ticket](https://github.com/noahahooja/p2beavers/projects/1#card-55168621)
+[Link to Code](https://github.com/noahahooja/p2beavers/blob/main/templates/leaderboard.html)
+
 
 Goals
 1) Complete Flappy Beaver game (Nolan)
