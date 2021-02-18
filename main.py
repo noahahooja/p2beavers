@@ -22,6 +22,8 @@ class User(db.Model):
     twenty_score = db.Column(db.Integer)
     snake_score = db.Column(db.Integer)
 
+
+
 @app.route('/sign_up/user', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -103,6 +105,10 @@ def snake():
 @app.route('/scorepage/', methods=['GET', 'POST'])
 def scorepage():
     return render_template("scorepage.html", Title="Scores page", width="1000")
+
+@app.route('/quiz/', methods=['GET', 'POST'])
+def quiz():
+    return render_template("quiz.html", Title="Quiz", width="1000")
 
 import requests
 
