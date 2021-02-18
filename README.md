@@ -55,5 +55,5 @@ Nolan: Easter Egg- Creating a separate web server and domain to run the easter e
 Easter Egg Location: http://beavers.pii.at
 
 Week of 2/16
-
-[Link to Ticket]()
+Aiden's Ticket Below
+[Link to Ticket](https://github.com/noahahooja/p2beavers/projects/1#card-55160808)
