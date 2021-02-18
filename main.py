@@ -106,6 +106,10 @@ def snake():
 def scorepage():
     return render_template("scorepage.html", Title="Scores page", width="1000")
 
+@app.route('/leaderboard/', methods=['GET', 'POST'])
+def leaderboard():
+    return render_template("leaderboard.html", Title="Leaderboard", width="1000")
+
 @app.route('/quiz/', methods=['GET', 'POST'])
 def quiz():
     return render_template("quiz.html", Title="Quiz", width="1000")
