@@ -158,11 +158,12 @@ def word():
 
     response = requests.request("GET", url, headers=headers)
 
-    #quote = response.text
+    start2 = 'rd":'
+    end2 = '"pro'
+    word2 = response.text[response.text.find(start2)+len(start2):response.text.find(end2)+len(start2)-5]
 
-    word1 = response.text
+    word = word2 + " - " + random.choice(['Websters Dictionary'])
 
-    word = word1 + " - " + random.choice(['Websters Dictionary'])
 
 
     return render_template("home.html", Title="Home", loginUsername='', logged_in=0, word=word)
@@ -172,22 +173,26 @@ def joke():
     # call to random quote web api
     import requests
 
-    url = "https://jokeapi-v2.p.rapidapi.com/joke/Any"
+    url = "https://geek-jokes.p.rapidapi.com/api"
 
-    querystring = {"format":"json","blacklistFlags":"nsfw,racist","idRange":"0-150","type":"single,twopart"}
+    querystring = {"format":"json"}
 
     headers = {
         'x-rapidapi-key': "be43b38cedmsh17c4689e2c1a95fp18da84jsnd77b7103f602",
-        'x-rapidapi-host': "jokeapi-v2.p.rapidapi.com"
+        'x-rapidapi-host': "geek-jokes.p.rapidapi.com"
     }
 
-    response = requests.request("GET", url, headers=headers, params = querystring)
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
     #quote = response.text
 
     joke1 = response.text
 
-    joke = joke1 + " - " + random.choice(['Websters Dictionary'])
+    start3 = '"j:'
+    end3 = '"p'
+    joke3 = response.text[response.text.find(start3)+len(start3):response.text.find(end3)+len(start3)-5]
+
+    joke = joke3 + " - " + random.choice(['Comedian'])
 
 
     return render_template("home.html", Title="Home", loginUsername='', logged_in=0, joke=joke)
