@@ -14,7 +14,7 @@ BEAVERS
 
 Scrum Board: https://padlet.com/noland43522/59nicc77kbm7ebt7
 Product Backlog: https://docs.google.com/document/d/1xEj5yHHlUAPphvRBRMrszuIpu87dqo8mykamLoRQMAs/edit?usp=sharing
-Deployment Link: 75.80.179.95
+Deployment Link: beaversarcade.cf
 Code/GitHub Link: https://github.com/noahahooja/p2beavers.git
 
 
