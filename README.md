@@ -20,6 +20,17 @@ Database Instructions
 
 Use the "sign up" button to create your account, choosing a unique username and password. Then, click on the "sign in" button to login to your account using the same login info you used to create your account.
 
+# The Technicals
+1. 4 Javascript Games
+   a. Flappy Beaver
+   b. Crossy Beaver
+   c. 2048
+   d. Snake
+2. 3 RestAPI's (Quote, Word, Joke)
+3. Sign up/Sign in system using SQL
+4. Games Quiz
+5. Leaderboard system/CRUD system to let users enter scores into a database
+
 # Project Board
 
 Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
