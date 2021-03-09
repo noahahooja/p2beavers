@@ -9,18 +9,22 @@ Runtime link: beaversarcade.cf
 
 Simply paste this link into your browser and you will be taken to our website. You can explore the four games we have created and make an account for yourself with the login page
 
-Game Instructions
-
-1. Flappy Beaver: Click the spacebar to make the beaver jump, avoid hitting the barriers and see how far you can go.
-2. Crossy Beaver: Use the arrow keys to maneuver the beaver around the different obstacles and make it across as many times as you can, you have 3 chances.
-3. 2048: Using the arroqw keys, combine smaller numbered tiles in order to gain a higher numbered tile. Try to score as many points as you can and see if you can reach the 2048 tile!
-4. Snake: Using the arrow keys, maneuver the snake around to ea the food which will make you grow. Avoid hitting the walls and your own tail.
-
 # Project Board
 
 Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
 
 # College Board Reflections/Incorporations
+
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+
 
 # History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
