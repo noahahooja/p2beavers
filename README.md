@@ -14,7 +14,7 @@ Simply paste this link into your browser and you will be taken to our website. Y
 Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
 
 
-History of big ticket changes:
+# History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
   12/24 Gameplayer format is 90% complete, needs databasing
   1/15 Games are completed/almost done
