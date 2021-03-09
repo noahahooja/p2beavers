@@ -9,6 +9,17 @@ Runtime link: beaversarcade.cf
 
 Simply paste this link into your browser and you will be taken to our website. You can explore the four games we have created and make an account for yourself with the login page
 
+Game Instructions
+
+Flappy Beaver: Click the spacebar to make the beaver jump, avoid hitting the barriers and see how far you can go.
+Crossy Beaver: Use the arrow keys to maneuver the beaver around the different obstacles and make it across as many times as you can, you have 3 chances.
+2048: Using the arroqw keys, combine smaller numbered tiles in order to gain a higher numbered tile. Try to score as many points as you can and see if you can reach the 2048 tile!
+Snake: Using the arrow keys, maneuver the snake around to ea the food which will make you grow. Avoid hitting the walls and your own tail.
+
+Database Instructions
+
+Use the "sign up" button to create your account, choosing a unique username and password. Then, click on the "sign in" button to login to your account using the same login info you used to create your account.
+
 # Project Board
 
 Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
