@@ -11,7 +11,7 @@ Simply paste this link into your browser and you will be taken to our website. Y
 
 # Project Board
 
-Check out our project board where our group kept track of our new tickets and explained each technical used per ticket:
+Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
 
 
 History of big ticket changes:
