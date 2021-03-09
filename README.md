@@ -1,8 +1,12 @@
-# p2beavers
+# P2-Beavers Arcade Project
 
 Welcome!
 
-In our project, we will store login information and game data from users signing in to play our web based games that we have created.
+In our project, we will store login information and game data from users signing in to play our web based games that we have created. Each group member made one game each, and we will be able to track users personal highscores and highscores among others. Learn more about our project below!
+
+# Website Instructions
+Runtime link: beaversarcade.cf
+Simply paste this link into your browser and you will be taken to our website. You can explore the four games we have created and make an account for yourself with the login page
 
 History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
