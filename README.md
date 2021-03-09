@@ -11,10 +11,10 @@ Simply paste this link into your browser and you will be taken to our website. Y
 
 Game Instructions
 
-Flappy Beaver: Click the spacebar to make the beaver jump, avoid hitting the barriers and see how far you can go.
-Crossy Beaver: Use the arrow keys to maneuver the beaver around the different obstacles and make it across as many times as you can, you have 3 chances.
-2048: Using the arroqw keys, combine smaller numbered tiles in order to gain a higher numbered tile. Try to score as many points as you can and see if you can reach the 2048 tile!
-Snake: Using the arrow keys, maneuver the snake around to ea the food which will make you grow. Avoid hitting the walls and your own tail.
+1. Flappy Beaver: Click the spacebar to make the beaver jump, avoid hitting the barriers and see how far you can go.
+2. Crossy Beaver: Use the arrow keys to maneuver the beaver around the different obstacles and make it across as many times as you can, you have 3 chances.
+3. 2048: Using the arroqw keys, combine smaller numbered tiles in order to gain a higher numbered tile. Try to score as many points as you can and see if you can reach the 2048 tile!
+4. Snake: Using the arrow keys, maneuver the snake around to ea the food which will make you grow. Avoid hitting the walls and your own tail.
 
 Database Instructions
 
