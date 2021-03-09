@@ -27,13 +27,13 @@ Check out our project board where our group kept track of our new tickets and ex
 # College Board Reflections/Incorporations
 
 
-First Header  | Second Header
+Big Ideas  | Connection to our Projet
 ------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+Big Idea 1: Creative Computing  | Content Cell
+Big Idea 2: Data  | Content Cell
+Big Idea 3: Algorithms and Programming  | Content Cell
+Big Idea 4: Computer Systems and Network  | Content Cell
+Big Idea 5: Impact of Computing  | Content Cell
 
 
 
