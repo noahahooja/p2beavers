@@ -26,14 +26,23 @@ Check out our project board where our group kept track of our new tickets and ex
 
 # College Board Reflections/Incorporations
 
+Big Ideas:
 
-Big Ideas  | Connection to our Projet
-------------- | -------------
-Big Idea 1: Creative Computing  | Content Cell
-Big Idea 2: Data  | Content Cell
-Big Idea 3: Algorithms and Programming  | Content Cell
-Big Idea 4: Computer Systems and Network  | Content Cell
-Big Idea 5: Impact of Computing  | Content Cell
+Big Idea 1: Creative Computing: Creativity in visuals and customization in our website shown through games like flappy beaver and crossy beaver. Personalization and free design flow for fundamentals project. Creating navbar with bootstrap template in order for a unique aspect in our project.
+
+
+Big Idea 2: Data: In our project, we were able to incorporate the “backend” java data in “frontend” to be used with an HTML. This was necessary in our project because we needed those front and end connections in order for our links to run on the web. This is shown through the website as all of our games appear through the navbar.
+
+
+Big Idea 3: Algorithms and Programming: Lists, iterations, and dictionaries along with other functions were used in our project in order to use all required fundamentals. We used dictionaries as a source for backend data that is connected with templates. We used lists to define buttons on our website in order to connect them with its correlated page. We used jinja templates in the frontend files to organize information in the web page and to also organize variables. HTML was used in almost all of the files
+
+
+Big Idea 4: Computer Systems and Network: We will be able to incorporate this by hosting a raspberry pi server. We will also have a running website than can be used anywhere. Runtime link: beaversarcade.cf
+
+
+Big Idea 5: Impact of Computing: We built and developed our website that is available to others outside of our group of 4. In our world today, we see how the internet has changed the world in almost every aspect in life. Our group strongly understands the impact of computing by seeing how we can share information to the world through our web server
+
+
 
 
 
