@@ -16,13 +16,6 @@ Game Instructions
 3. 2048: Using the arroqw keys, combine smaller numbered tiles in order to gain a higher numbered tile. Try to score as many points as you can and see if you can reach the 2048 tile!
 4. Snake: Using the arrow keys, maneuver the snake around to ea the food which will make you grow. Avoid hitting the walls and your own tail.
 
-2048 Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/2048.html 
-
-Snake Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/snake2.html
-
-Crossy Beaver Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/crossybeaver.html
-
-Flappy Bird Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/flappybeaver.html
 
 Database Instructions
 
@@ -38,6 +31,14 @@ Use the "sign up" button to create your account, choosing a unique username and 
 3. Sign up/Sign in system using SQL
 4. Games Quiz
 5. Leaderboard system/CRUD system to let users enter scores into a database
+
+2048 Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/2048.html 
+
+Snake Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/snake2.html
+
+Crossy Beaver Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/crossybeaver.html
+
+Flappy Bird Link to code: https://github.com/noahahooja/p2beavers/blob/main/templates/flappybeaver.html
 
 # Project Board
 
