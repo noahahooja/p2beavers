@@ -13,6 +13,7 @@ Simply paste this link into your browser and you will be taken to our website. Y
 
 Check out our project board where our group kept track of our new tickets and explained each technical used per ticket: https://github.com/noahahooja/p2beavers/projects/1
 
+# College Board Reflections/Incorporations
 
 # History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
