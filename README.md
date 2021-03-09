@@ -9,6 +9,11 @@ Runtime link: beaversarcade.cf
 
 Simply paste this link into your browser and you will be taken to our website. You can explore the four games we have created and make an account for yourself with the login page
 
+# Project Board
+
+Check out our project board where our group kept track of our new tickets and explained each technical used per ticket:
+
+
 History of big ticket changes:
   12/11 Updated readme to include project plan and scrum board links.
   12/24 Gameplayer format is 90% complete, needs databasing
