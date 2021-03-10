@@ -22,11 +22,16 @@ Database Instructions
 Use the "sign up" button to create your account, choosing a unique username and password. Then, click on the "sign in" button to login to your account using the same login info you used to create your account.
 
 # The Technicals
-1. 4 Javascript Games
-   a. Flappy Beaver
-   b. Crossy Beaver
-   c. 2048
-   d. Snake
+1. 4 Javascript Games:
+
+   a. Flappy Beaver done by Nolan
+   
+   b. Crossy Beaver done by Ryan
+   
+   c. 2048 done by Noah
+   
+   d. Snake done by Aidan
+   
 2. 3 RestAPI's (Quote, Word, Joke)
 3. Sign up/Sign in system using SQL
 4. Games Quiz
